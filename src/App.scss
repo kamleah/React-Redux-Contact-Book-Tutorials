@@ -1,0 +1,11 @@
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+// @import "../node_modules/bootstrap/scss/bootstrap";
+
+.actions{
+  opacity: 0;
+}
+tr:hover .actions{
+  opacity: 1;
+}
