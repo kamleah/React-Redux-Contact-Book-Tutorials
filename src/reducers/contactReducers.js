@@ -5,7 +5,7 @@ import {
   DELETE_CONTACT,
   SELECT_CONTACT,
   CLEAR_CONTACT,
-  DELETE_SELECTED_CONTACTS
+  DELETE_SELECTED_CONTACTS,
 } from "../constant/Types";
 const initialState = {
   users: [
@@ -52,7 +52,7 @@ export const contactReducer = (state = initialState, action) => {
         users: [action.payload, ...state.users],
       };
     case GET_CONTACT:
-      let arr = state.users.filter((contact) => contact.id == action.payload);
+      let arr = state.users.filter((contact) => contact.id === action.payload);
       arr = arr.values();
       for (let val of arr) {
         arr = val;
@@ -65,7 +65,7 @@ export const contactReducer = (state = initialState, action) => {
       return {
         ...state,
         users: state.users.map((contact) =>
-          contact.id == action.payload.id ? action.payload : contact
+          contact.id === action.payload.id ? action.payload : contact
         ),
       };
     case DELETE_CONTACT:
@@ -73,11 +73,11 @@ export const contactReducer = (state = initialState, action) => {
         ...state,
         users: state.users.filter((contact) => contact.id !== action.payload),
       };
-      case DELETE_SELECTED_CONTACTS:
-        return {
-          ...state,
-          users:[]
-        };
+    case DELETE_SELECTED_CONTACTS:
+      return {
+        ...state,
+        users: [],
+      };
     case SELECT_CONTACT:
       return {
         ...state,
